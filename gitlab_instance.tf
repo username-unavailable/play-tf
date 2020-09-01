@@ -8,7 +8,9 @@ resource "google_compute_instance" "gitlab" {
 
   network_interface {
     network = "default"
-    access_config{}
+    access_config {
+      nat_ip = google_compute_address.gitlab_static.address
+    }
   }
 
   boot_disk {
